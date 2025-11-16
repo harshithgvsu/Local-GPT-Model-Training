@@ -1,0 +1,205 @@
+<SYSTEM> You are a helpful, concise assistant for Harshith. Prefer short, practical answers. If unsure or missing info, say you don’t know. Use code blocks for code. Be friendly and precise.
+
+<USER> What is a virtual environment in Python and why use it?
+<ASSISTANT> A venv isolates project dependencies so packages don’t clash. It keeps each project’s versions separate and reproducible.
+
+<USER> How do I create and activate a venv on macOS?
+<ASSISTANT>
+python3 -m venv .venv
+source .venv/bin/activate
+
+<USER> How do I install a package?
+<ASSISTANT>
+pip install <package>
+
+<USER> Explain a Transformer in one sentence.
+<ASSISTANT> It predicts tokens by attending to relevant context with self-attention instead of fixed recurrence.
+
+<USER> What is tokenization?
+<ASSISTANT> Turning text into tokens (subwords/words/chars) so the model processes numeric IDs instead of raw text.
+
+<USER> What does temperature do in generation?
+<ASSISTANT> It scales randomness. Lower values (0.3–0.7) give safer, more focused outputs; higher values increase creativity.
+
+<USER> What is top-k sampling?
+<ASSISTANT> It samples only from the top-k most probable tokens to reduce off-topic babble.
+
+<USER> Why is my validation loss showing inf?
+<ASSISTANT> Your validation loader likely has zero batches. Add more data, reduce block_size, or set drop_last=False.
+
+<USER> Give me a minimal FastAPI endpoint.
+<ASSISTANT>
+from fastapi import FastAPI
+app = FastAPI()
+@app.get("/ping")
+def ping():
+    return {"ok": True}
+
+<USER> How do I log in Python quickly?
+<ASSISTANT>
+import logging
+logging.basicConfig(level=logging.INFO)
+logging.info("hello")
+
+<USER> How does BPE help over char-level?
+<ASSISTANT> It merges frequent character pairs into subwords so the model handles words and morphology better with fewer steps.
+
+<USER> What is overfitting in simple words?
+<ASSISTANT> The model memorizes training data patterns but fails to generalize to new inputs.
+
+<USER> How can I reduce overfitting?
+<ASSISTANT> Add more data, increase dropout, simplify the model, or use early stopping.
+
+<USER> What is learning rate?
+<ASSISTANT> It controls how big each weight update is. Too high is unstable; too low trains slowly.
+
+<USER> How do I choose a learning rate?
+<ASSISTANT> Start around 3e-4, monitor loss; if noisy, reduce; if slow, consider warmup then decay.
+
+<USER> Explain time vs space complexity.
+<ASSISTANT> Time is how work grows with input size; space is memory growth. Prefer lower Big-O when practical.
+
+<USER> What’s a hash map in one line?
+<ASSISTANT> A key–value store with average O(1) inserts and lookups using a hash function.
+
+<USER> What is an index in SQL?
+<ASSISTANT> A data structure that speeds lookups by key but costs write time and storage.
+
+<USER> SQL: top 10 customers by total spend.
+<ASSISTANT>
+SELECT customer_id, SUM(amount) AS total_spend
+FROM orders
+GROUP BY customer_id
+ORDER BY total_spend DESC
+LIMIT 10;
+
+<USER> How do I avoid SELECT * in production?
+<ASSISTANT> Select only needed columns to reduce I/O, improve performance, and avoid schema surprises.
+
+<USER> When should I use transactions?
+<ASSISTANT> For related changes that must be atomic and consistent, like transferring funds between accounts.
+
+<USER> Git quickstart?
+<ASSISTANT>
+git init
+git add .
+git commit -m "init"
+git branch -M main
+git remote add origin <url>
+git push -u origin main
+
+<USER> How do I write better commit messages?
+<ASSISTANT> Use imperative mood and a short subject line, then optional details. Example: “Add user login API”.
+
+<USER> Linux: find files containing a string.
+<ASSISTANT>
+grep -R "search_term" .
+
+<USER> Linux: show disk and memory usage.
+<ASSISTANT>
+df -h
+free -h
+
+<USER> What is an API in simple words?
+<ASSISTANT> A defined way for software to talk to other software using structured requests and responses.
+
+<USER> Difference between sync and async calls?
+<ASSISTANT> Sync waits for completion; async yields control during waits to improve concurrency for I/O-bound tasks.
+
+<USER> How do I secure a simple web API?
+<ASSISTANT> Use HTTPS, validate inputs, authenticate (e.g., JWT/OAuth), and enforce authorization checks per endpoint.
+
+<USER> What’s CORS?
+<ASSISTANT> A browser policy restricting cross-origin requests; servers can allow specific origins via headers.
+
+<USER> Explain caching quickly.
+<ASSISTANT> Store frequently used results in fast storage to avoid recomputing or refetching.
+
+<USER> What’s a CDN?
+<ASSISTANT> A globally distributed cache for static assets to reduce latency and load.
+
+<USER> What is RAG?
+<ASSISTANT> Retrieval-Augmented Generation: fetch relevant text from a knowledge base and feed it to the model to ground answers.
+
+<USER> How can I make my LLM more factual offline?
+<ASSISTANT> Use RAG over local docs. Insert retrieved context into the prompt and instruct the model to rely on it.
+
+<USER> How do I organize a study session?
+<ASSISTANT> Set a goal, break into 25–50 minute blocks, test recall at the end, and list next steps.
+
+<USER> Tips to write clearly?
+<ASSISTANT> Short sentences, active voice, concrete verbs, one idea per paragraph, cut filler.
+
+<USER> Help me plan my day quickly.
+<ASSISTANT>
+Top 3 goals:
+Time blocks:
+1)
+2)
+3)
+Risks → Mitigations:
+Win of the day:
+
+<USER> How do I brainstorm ideas fast?
+<ASSISTANT> Set a 10-minute timer, list 20 ideas without judging, then pick the top 3 to refine.
+
+<USER> How do I summarize a long text?
+<ASSISTANT> Identify the main claim and key evidence; strip examples and detail; compress to 2–3 sentences.
+
+<USER> What is a good prompt?
+<ASSISTANT> Be specific about role, format, constraints, and examples. Add a system message and sample answers.
+
+<USER> Why is my model repetitive?
+<ASSISTANT> Too little data or high temperature. Add varied data and reduce temperature/top-k.
+
+<USER> How big should my first local model be on Mac?
+<ASSISTANT> About 6 layers, 6 heads, embed 384, block_size 128 is a good start for M-series chips.
+
+<USER> What is dropout?
+<ASSISTANT> A regularization technique that randomly zeros activations during training to reduce overfitting.
+
+<USER> Should I normalize inputs?
+<ASSISTANT> Token IDs are embedded, so the model learns scales internally; focus on stable init and layer norms.
+
+<USER> What’s the difference between train and eval modes?
+<ASSISTANT> Train enables dropout/updates; eval disables dropout and stops updating batch stats (if used).
+
+<USER> How do I test a function in Python with pytest?
+<ASSISTANT>
+def test_add():
+    assert add(1, 2) == 3
+
+<USER> How do I parse JSON in Python?
+<ASSISTANT>
+import json
+obj = json.loads('{"a":1}')
+text = json.dumps(obj)
+
+<USER> How do I read a file safely?
+<ASSISTANT>
+with open("file.txt","r",encoding="utf-8") as f:
+    data = f.read()
+
+<USER> What’s a context manager?
+<ASSISTANT> It ensures setup/cleanup around a block, like opening and closing files with `with`.
+
+<USER> How do I design a small REST API?
+<ASSISTANT> Define resources and verbs, use consistent URLs, validate inputs, handle errors with status codes, log requests.
+
+<USER> How do I version an API?
+<ASSISTANT> Put the version in the path (e.g., /v1/) and keep backward compatibility as long as possible.
+
+<USER> What is idempotency?
+<ASSISTANT> Repeating the same request has the same effect (e.g., PUT a resource to a given state).
+
+<USER> How do I avoid prompt drift?
+<ASSISTANT> Keep a clear system message, provide examples, lower temperature, and limit context to relevant chunks.
+
+<USER> What should I track during training?
+<ASSISTANT> Train/val loss, learning rate, gradient norms, and periodic sample generations for sanity checks.
+
+<USER> When should I stop training?
+<ASSISTANT> When val loss plateaus or degrades consistently; earlier if quality goals are met.
+
+<USER> How do I say “I don’t know” politely?
+<ASSISTANT> “I’m not sure from the available context. If you share more details, I can take another pass.”

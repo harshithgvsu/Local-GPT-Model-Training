@@ -1,0 +1,200 @@
+# instruction + context dataset for local RAG-aware model
+# format: <SYSTEM> ... <CONTEXT> ... <USER> ... <ASSISTANT> ...
+
+<SYSTEM> You are a helpful assistant. Answer clearly.
+<USER> What is a Transformer?
+<ASSISTANT> It predicts tokens by attending to the most relevant parts of the input using self-attention.
+
+############################################################
+# CAPITAL OF FRANCE (grouped together)
+############################################################
+<SYSTEM> You answer using the context below.
+<CONTEXT>
+Paris is the capital of France.
+</CONTEXT>
+<USER> What is the capital of France?
+<ASSISTANT> Paris.
+
+<SYSTEM> You answer using the context below.
+<CONTEXT>
+Paris is the capital and most populous city of France.
+</CONTEXT>
+<USER> What is the capital of France?
+<ASSISTANT> Paris.
+
+<SYSTEM> You answer using the context below.
+<CONTEXT>
+Paris is the capital and most populous city of France.
+</CONTEXT>
+<USER> Which city is the capital?
+<ASSISTANT> Paris.
+
+############################################################
+# PHOTOSYNTHESIS (grouped together)
+############################################################
+<SYSTEM> You answer using the context below.
+<CONTEXT>
+Photosynthesis converts light, carbon dioxide, and water into glucose and oxygen in plants.
+</CONTEXT>
+<USER> What is photosynthesis?
+<ASSISTANT> Photosynthesis is the process by which plants convert light, carbon dioxide, and water into glucose and oxygen.
+
+<SYSTEM> You answer using the context below.
+<CONTEXT>
+Photosynthesis converts light, carbon dioxide, and water into glucose and oxygen in plants.
+</CONTEXT>
+<USER> What does photosynthesis produce?
+<ASSISTANT> It produces glucose and oxygen.
+
+<SYSTEM> You answer using the context below.
+<CONTEXT>
+Photosynthesis converts light, carbon dioxide, and water into glucose and oxygen in plants.
+</CONTEXT>
+<USER> What inputs does photosynthesis need?
+<ASSISTANT> Light, carbon dioxide, and water.
+
+<SYSTEM> You answer using the context below.
+<CONTEXT>
+Photosynthesis converts light, carbon dioxide, and water into glucose and oxygen in plants.
+</CONTEXT>
+<USER> Say it in one line.
+<ASSISTANT> Plants use light, CO₂, and water to make glucose and oxygen.
+
+# mismatch: question does not match context → must say it doesn't know
+<SYSTEM> You answer using the context below.
+<CONTEXT>
+Photosynthesis converts light, carbon dioxide, and water into glucose and oxygen in plants.
+</CONTEXT>
+<USER> What is the speed of light?
+<ASSISTANT> I don’t have that information in the provided context.
+
+############################################################
+# SPEED OF LIGHT (only once!)
+############################################################
+<SYSTEM> You answer using the context below.
+<CONTEXT>
+The speed of light in a vacuum is about 299,792 kilometers per second.
+</CONTEXT>
+<USER> What is the speed of light?
+<ASSISTANT> About 299,792 kilometers per second.
+
+# mismatch the other way around
+<SYSTEM> You answer using the context below.
+<CONTEXT>
+The speed of light in a vacuum is about 299,792 kilometers per second.
+</CONTEXT>
+<USER> What is photosynthesis?
+<ASSISTANT> I don’t have that information in the provided context.
+
+############################################################
+# OTHER FACTS (still context-based)
+############################################################
+<SYSTEM> You answer using the context below.
+<CONTEXT>
+Water boils at 100°C or 212°F at standard atmospheric pressure.
+</CONTEXT>
+<USER> At what temperature does water boil?
+<ASSISTANT> 100°C or 212°F under standard conditions.
+
+<SYSTEM> You answer using the context below.
+<CONTEXT>
+Earth revolves around the Sun once every 365.25 days, defining a year.
+</CONTEXT>
+<USER> How long does it take Earth to orbit the Sun?
+<ASSISTANT> About 365 days.
+
+<SYSTEM> You answer using the context below.
+<CONTEXT>
+The largest planet in our solar system is Jupiter.
+</CONTEXT>
+<USER> Which is the largest planet?
+<ASSISTANT> Jupiter.
+
+<SYSTEM> You answer using the context below.
+<CONTEXT>
+The Great Wall of China was built to protect Chinese states from northern invasions.
+</CONTEXT>
+<USER> Why was the Great Wall of China built?
+<ASSISTANT> To protect ancient China from northern invasions.
+
+<SYSTEM> You answer using the context below.
+<CONTEXT>
+Mount Everest is the highest mountain above sea level, standing at 8,849 meters.
+</CONTEXT>
+<USER> What is the tallest mountain in the world?
+<ASSISTANT> Mount Everest.
+
+<SYSTEM> You answer using the context below.
+<CONTEXT>
+The human heart has four chambers: two atria and two ventricles.
+</CONTEXT>
+<USER> How many chambers does the human heart have?
+<ASSISTANT> Four — two atria and two ventricles.
+
+<SYSTEM> You answer using the context below.
+<CONTEXT>
+The Pacific Ocean is the largest and deepest ocean on Earth.
+</CONTEXT>
+<USER> Which is the largest ocean?
+<ASSISTANT> The Pacific Ocean.
+
+<SYSTEM> You answer using the context below.
+<CONTEXT>
+The Internet is a global network that connects millions of computers for communication and data exchange.
+</CONTEXT>
+<USER> What is the Internet?
+<ASSISTANT> A worldwide network of computers that share data and communication.
+
+############################################################
+# TECH BASICS
+############################################################
+<SYSTEM> You answer using the context below.
+<CONTEXT>
+Python is an interpreted, high-level programming language known for readability and versatility.
+</CONTEXT>
+<USER> What is Python?
+<ASSISTANT> A high-level, interpreted programming language that’s readable and versatile.
+
+<SYSTEM> You answer using the context below.
+<CONTEXT>
+The main data structure in Python used to store ordered collections is called a list.
+</CONTEXT>
+<USER> What is a list in Python?
+<ASSISTANT> A built-in data structure used to store an ordered collection of items.
+
+<SYSTEM> You answer using the context below.
+<CONTEXT>
+An API, or Application Programming Interface, allows software components to communicate with each other.
+</CONTEXT>
+<USER> What does API stand for and what does it do?
+<ASSISTANT> API stands for Application Programming Interface; it lets software components talk to each other.
+
+<SYSTEM> You answer using the context below.
+<CONTEXT>
+SQL stands for Structured Query Language and is used to manage and query relational databases.
+</CONTEXT>
+<USER> What is SQL?
+<ASSISTANT> It’s a language for managing and querying relational databases.
+
+<SYSTEM> You answer using the context below.
+<CONTEXT>
+Machine learning is a branch of artificial intelligence where systems learn patterns from data instead of explicit programming.
+</CONTEXT>
+<USER> What is machine learning?
+<ASSISTANT> It’s a way for computers to learn patterns from data without being explicitly programmed.
+
+<SYSTEM> You answer using the context below.
+<CONTEXT>
+Cloud computing delivers computing services like storage, servers, databases, and networking over the Internet.
+</CONTEXT>
+<USER> What is cloud computing?
+<ASSISTANT> Using Internet-hosted services for storage, servers, and networking instead of local machines.
+
+############################################################
+# "DON'T KNOW" PATTERN
+############################################################
+<SYSTEM> You answer using the context below.
+<CONTEXT>
+</CONTEXT>
+<USER> Who invented teleportation?
+<ASSISTANT> I don’t have that information in the provided context.

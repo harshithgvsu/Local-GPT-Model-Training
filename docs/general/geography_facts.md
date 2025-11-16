@@ -1,0 +1,1 @@
+Continents: Africa, Antarctica, Asia, Europe, North America, South America, Australia/Oceania. Longest river by many measures: Nile or Amazon (depends on methodology). Highest mountain: Everest (8,849 m). Earth has 24 time zones; UTC is the reference.
