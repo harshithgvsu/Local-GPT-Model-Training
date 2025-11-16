@@ -1,5 +1,3 @@
-# retriever.py
-# Minimal offline TF-IDF retriever in pure Python (no external libs).
 import os, re, math, json
 from collections import Counter, defaultdict
 from typing import List, Dict, Tuple

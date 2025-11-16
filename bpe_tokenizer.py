@@ -1,7 +1,3 @@
-# bpe_tokenizer.py
-# Tiny, self-contained BPE tokenizer (character-based init + pair merges).
-# Goal: better than pure char-level, still easy to read and hack.
-
 import json
 from collections import Counter, defaultdict
 from typing import List, Dict, Tuple
@@ -10,7 +6,6 @@ SPECIAL_TOKENS = ["<PAD>", "<BOS>", "<EOS>", "<SYSTEM>", "<USER>", "<ASSISTANT>"
 
 
 def _split_to_chars(word: str) -> Tuple[str, ...]:
-  # Represent a word as a tuple of individual chars; EOS marker inside word is not used.
   return tuple(word)
 
 
@@ -18,18 +13,16 @@ class BPETokenizer:
   def __init__(self, vocab: Dict[str, int], merges: List[Tuple[str, str]]):
     self.vocab = vocab  # token -> id
     self.id2tok = {i: t for t, i in vocab.items()}
-    self.merges = merges  # list of merged pairs in order
-    # Build the merge table for fast encoding
+    self.merges = merges
     self.merge_ranks = {pair: i for i, pair in enumerate(merges)}
 
   @staticmethod
   def _get_vocab_from_corpus(texts: List[str], reserved: List[str]) -> Counter:
-    # Start from individual characters seen in corpus plus reserved specials.
     chars = Counter()
     for t in texts:
       chars.update(t)
     for s in reserved:
-      chars[s] += 1  # ensure presence
+      chars[s] += 1
     return chars
 
   @staticmethod
